@@ -17,21 +17,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter bill amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NML-H7-nic">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter bill amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NML-H7-nic">
                                 <rect key="frame" x="20" y="28" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="el8-2e-HUY">
-                                <rect key="frame" x="18" y="66" width="564" height="31"/>
+                                <rect key="frame" x="18" y="94" width="514" height="31"/>
                                 <animations/>
                                 <connections>
                                     <action selector="setSliderValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="2T0-kO-fCt"/>
                                 </connections>
                             </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FEh-XU-uK0">
+                                <rect key="frame" x="210" y="160" width="180" height="29"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="0w0-hR-g6v"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="15%"/>
+                                    <segment title="18%"/>
+                                    <segment title="22%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeTipValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="zSS-WT-iKJ"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="904-uU-Yoq">
+                                <rect key="frame" x="538" y="98" width="42" height="20.5"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="qdV-cA-aWq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of people" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcC-1l-Lkm">
+                                <rect key="frame" x="232" y="66" width="137" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4y-Xy-cYN">
+                                <rect key="frame" x="288.5" y="132" width="24.5" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="194-Hl-fIY">
-                                <rect key="frame" x="20" y="156" width="560" height="44"/>
+                                <rect key="frame" x="20" y="196" width="560" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="d6L-Pl-H8e"/>
@@ -40,42 +79,37 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o9-qu-idA">
-                                <rect key="frame" x="258" y="104" width="84" height="44"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="wEv-07-AeY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Calculate"/>
-                                <connections>
-                                    <action selector="calculateSplitAmount" destination="BYZ-38-t0r" eventType="touchUpInside" id="pmz-7k-OYn"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0o9-qu-idA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8hn-kh-Q7A"/>
-                            <constraint firstItem="el8-2e-HUY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CgK-8k-VdL"/>
-                            <constraint firstItem="194-Hl-fIY" firstAttribute="top" secondItem="0o9-qu-idA" secondAttribute="bottom" constant="8" id="HQj-yT-9bN"/>
+                            <constraint firstItem="FEh-XU-uK0" firstAttribute="top" secondItem="H4y-Xy-cYN" secondAttribute="bottom" constant="8" id="2KK-8D-UJT"/>
+                            <constraint firstItem="194-Hl-fIY" firstAttribute="top" secondItem="FEh-XU-uK0" secondAttribute="bottom" constant="8" id="43H-4b-ZeY"/>
+                            <constraint firstItem="H4y-Xy-cYN" firstAttribute="top" secondItem="el8-2e-HUY" secondAttribute="bottom" constant="8" id="4or-dv-Opn"/>
+                            <constraint firstItem="904-uU-Yoq" firstAttribute="leading" secondItem="el8-2e-HUY" secondAttribute="trailing" constant="8" id="K3b-qw-7db"/>
+                            <constraint firstItem="el8-2e-HUY" firstAttribute="top" secondItem="jcC-1l-Lkm" secondAttribute="bottom" constant="7.5" id="MiK-eU-Zyz"/>
+                            <constraint firstItem="904-uU-Yoq" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PeQ-ZO-EgO"/>
                             <constraint firstItem="NML-H7-nic" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RWG-6d-ywP"/>
                             <constraint firstItem="NML-H7-nic" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="S2H-f1-CHJ"/>
                             <constraint firstItem="194-Hl-fIY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Sjo-5b-mao"/>
                             <constraint firstItem="NML-H7-nic" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ugx-1T-GGO"/>
-                            <constraint firstItem="el8-2e-HUY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="YMb-eH-nDQ"/>
+                            <constraint firstItem="FEh-XU-uK0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XPg-RN-dsp"/>
                             <constraint firstItem="el8-2e-HUY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Zq2-Pq-jwp"/>
                             <constraint firstItem="NML-H7-nic" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aAt-kg-gvn"/>
+                            <constraint firstItem="jcC-1l-Lkm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c18-La-UlN"/>
                             <constraint firstItem="194-Hl-fIY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fGU-Jk-6D7"/>
-                            <constraint firstItem="el8-2e-HUY" firstAttribute="top" secondItem="NML-H7-nic" secondAttribute="bottom" constant="8" id="gMa-vc-dci"/>
                             <constraint firstItem="194-Hl-fIY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j3V-XS-6sS"/>
-                            <constraint firstItem="0o9-qu-idA" firstAttribute="top" secondItem="el8-2e-HUY" secondAttribute="bottom" constant="8" id="m10-MZ-cEM"/>
+                            <constraint firstItem="904-uU-Yoq" firstAttribute="centerY" secondItem="el8-2e-HUY" secondAttribute="centerY" id="nE0-lG-4El"/>
+                            <constraint firstItem="jcC-1l-Lkm" firstAttribute="top" secondItem="NML-H7-nic" secondAttribute="bottom" constant="8" id="rpI-JO-gPl"/>
+                            <constraint firstItem="H4y-Xy-cYN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tUu-Co-SZW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="billAmountTextField" destination="NML-H7-nic" id="lwk-e8-RfJ"/>
+                        <outlet property="numberOfPeopleLabel" destination="904-uU-Yoq" id="wsO-GR-Afy"/>
                         <outlet property="numberOfPeopleSlider" destination="el8-2e-HUY" id="VUj-qh-A4D"/>
                         <outlet property="splitAmountLabel" destination="194-Hl-fIY" id="RDq-fk-bog"/>
+                        <outlet property="tipSegmentedControl" destination="FEh-XU-uK0" id="Gms-nv-l1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

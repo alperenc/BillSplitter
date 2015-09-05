@@ -12,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
 @property (weak, nonatomic) IBOutlet UISlider *numberOfPeopleSlider;
 @property (weak, nonatomic) IBOutlet UILabel *splitAmountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfPeopleLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tipSegmentedControl;
 
 @property (strong, nonatomic) UIToolbar *accessoryView;
 @property (strong, nonatomic) NSNumberFormatter *formatter;
@@ -22,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.billAmountTextField.delegate = self;
     
     self.accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0)];
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
@@ -44,7 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)calculateSplitAmount {
+- (void)calculateSplitAmount {
     
     self.formatter = [NSNumberFormatter new];
     
@@ -52,7 +53,20 @@
     
     NSNumber *billAmount = [self.formatter numberFromString:self.billAmountTextField.text]; //[NSDecimalNumber decimalNumberWithString:self.billAmountTextField.text];
     
-    NSNumber *splitAmount = @(billAmount.floatValue / (ceilf(self.numberOfPeopleSlider.value)));
+    NSNumber *tipAmount = @(billAmount.floatValue * 0.15);
+    
+    switch (self.tipSegmentedControl.selectedSegmentIndex) {
+        case 1:
+            tipAmount = @(billAmount.floatValue * 0.18);
+            break;
+        case 2:
+            tipAmount = @(billAmount.floatValue * 0.22);
+            break;
+        default:
+            break;
+    }
+    
+    NSNumber *splitAmount = @((billAmount.floatValue + tipAmount.floatValue) / (ceilf(self.numberOfPeopleSlider.value)));
     
     self.formatter.numberStyle = NSNumberFormatterCurrencyStyle;
     
@@ -64,6 +78,11 @@
 
 - (IBAction)setSliderValue:(UISlider *)sender {
     [sender setValue:(ceilf(sender.value)) animated:YES];
+    self.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%d", (int)sender.value];
+    [self calculateSplitAmount];
+}
+
+- (IBAction)changeTipValue:(UISegmentedControl *)sender {
     [self calculateSplitAmount];
 }
 
