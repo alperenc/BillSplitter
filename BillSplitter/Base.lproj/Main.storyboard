@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,71 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter bill amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NML-H7-nic">
+                                <rect key="frame" x="20" y="20" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="el8-2e-HUY">
+                                <rect key="frame" x="18" y="58" width="564" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="setSliderValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="2T0-kO-fCt"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o9-qu-idA">
+                                <rect key="frame" x="258" y="96" width="84" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wEv-07-AeY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Calculate"/>
+                                <connections>
+                                    <action selector="calculateSplitAmount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jSh-PZ-jbx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="194-Hl-fIY">
+                                <rect key="frame" x="20" y="148" width="560" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="d6L-Pl-H8e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0o9-qu-idA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8hn-kh-Q7A"/>
+                            <constraint firstItem="el8-2e-HUY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CgK-8k-VdL"/>
+                            <constraint firstItem="194-Hl-fIY" firstAttribute="top" secondItem="0o9-qu-idA" secondAttribute="bottom" constant="8" id="HQj-yT-9bN"/>
+                            <constraint firstItem="NML-H7-nic" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RWG-6d-ywP"/>
+                            <constraint firstItem="NML-H7-nic" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="S2H-f1-CHJ"/>
+                            <constraint firstItem="194-Hl-fIY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Sjo-5b-mao"/>
+                            <constraint firstItem="NML-H7-nic" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ugx-1T-GGO"/>
+                            <constraint firstItem="el8-2e-HUY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="YMb-eH-nDQ"/>
+                            <constraint firstItem="el8-2e-HUY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Zq2-Pq-jwp"/>
+                            <constraint firstItem="NML-H7-nic" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aAt-kg-gvn"/>
+                            <constraint firstItem="194-Hl-fIY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fGU-Jk-6D7"/>
+                            <constraint firstItem="el8-2e-HUY" firstAttribute="top" secondItem="NML-H7-nic" secondAttribute="bottom" constant="8" id="gMa-vc-dci"/>
+                            <constraint firstItem="194-Hl-fIY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j3V-XS-6sS"/>
+                            <constraint firstItem="0o9-qu-idA" firstAttribute="top" secondItem="el8-2e-HUY" secondAttribute="bottom" constant="8" id="m10-MZ-cEM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="billAmountTextField" destination="NML-H7-nic" id="lwk-e8-RfJ"/>
+                        <outlet property="numberOfPeopleSlider" destination="el8-2e-HUY" id="VUj-qh-A4D"/>
+                        <outlet property="splitAmountLabel" destination="194-Hl-fIY" id="RDq-fk-bog"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="340" y="429"/>
         </scene>
     </scenes>
 </document>
